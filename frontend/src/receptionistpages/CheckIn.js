@@ -13,11 +13,11 @@ import {
   Grid,
   Paper
 } from '@mui/material';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider, DesktopDatePicker } from '@mui/x-date-pickers';
 import { fetchAllGuests, fetchAvailableRooms, createBooking } from '../api'; // Assuming these API calls are available
 import { differenceInDays } from 'date-fns'; // To calculate the difference in days between dates
 import { updateRoomStatus } from '../api'; // API function to update room status
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const CheckIn = () => {
   const [guests, setGuests] = useState([]);
@@ -158,7 +158,7 @@ const CheckIn = () => {
 
           {/* Check-In Date */}
           <Grid item xs={12} md={6}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DesktopDatePicker
                 label="Check In Date"
                 inputFormat="MM/dd/yyyy"
@@ -171,7 +171,7 @@ const CheckIn = () => {
 
           {/* Check-Out Date */}
           <Grid item xs={12} md={6}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DesktopDatePicker
                 label="Check Out Date"
                 inputFormat="MM/dd/yyyy"
